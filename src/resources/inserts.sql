@@ -1,15 +1,15 @@
---MARCA
-INSERT INTO marca (descricao) VALUES ('Toyota');
+INSERT INTO tipo_fase (descricao) VALUES ('monofasico');
+INSERT INTO tipo_fase (descricao) VALUES ('bifasico');
+INSERT INTO tipo_fase (descricao) VALUES ('trifasico');
 
---MARCA PNEU
-INSERT INTO marca_pneu (descricao) VALUES ('goodyear');
-INSERT INTO marca_pneu (descricao) VALUES ('pirelli');
-INSERT INTO marca_pneu (descricao) VALUES ('michelin');
-INSERT INTO marca_pneu (descricao) VALUES ('toyo');
-INSERT INTO marca_pneu (descricao) VALUES ('dayton');
-INSERT INTO marca_pneu (descricao) VALUES ('multi-mile');
-INSERT INTO marca_pneu (descricao) VALUES ('kenda');
-INSERT INTO marca_pneu (descricao) VALUES ('firestone');
-INSERT INTO marca_pneu (descricao) VALUES ('gt radial');
-INSERT INTO marca_pneu (descricao) VALUES ('marshal');
-INSERT INTO marca_pneu (descricao) VALUES ('yokohama');
+INSERT INTO tipo_pessoa (descricao) VALUES ('pessoa-fisica');
+INSERT INTO tipo_pessoa (descricao) VALUES ('pessoa-juridica');
+
+INSERT INTO pessoa (nome, cpf, tipo_pessoa_id ) VALUES ('Vitor', 12345678910, 1);
+
+INSERT INTO cliente (num_documento, num_cliente, pessoa_id) VALUES ('Vitor', 12345678910, 1);
+INSERT INTO funcionario(codigo_funcional, pessoa_id) VALUES  (123123123, 1);
+
+INSERT INTO rota (descricao) VALUES ('Fortaleza');
+INSERT INTO rota (descricao) VALUES ('Aquiraz');
+INSERT INTO rota (descricao) VALUES ('Quixada');
