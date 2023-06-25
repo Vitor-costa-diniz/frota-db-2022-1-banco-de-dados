@@ -85,6 +85,9 @@ public class TarifaDAO extends ConexaoDB{
                 String lei = rs.getString("lei");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataFinal = rs.getTimestamp("data_final");
+
+                Tarifa tarifa = new Tarifa(id, taxa, classe, lei, dataInicio, dataFinal);
+                entidades.add(tarifa);
             }
         } catch (SQLException e) {
             printSQLException(e);

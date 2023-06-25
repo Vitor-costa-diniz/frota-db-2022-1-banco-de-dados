@@ -1,24 +1,26 @@
 package br.com.frota.util;
 
 import br.com.frota.DAO.*;
-import br.com.frota.model.Cliente;
-import br.com.frota.model.Funcionario;
-import br.com.frota.model.Rota;
+import br.com.frota.model.Contrato;
+
+import java.sql.Timestamp;
+
 
 public class Teste {
     public static void main(String[] args) throws Exception {
 //        ConexaoDB.criarTabelas()
 
-        RotaDAO rotaDAO = new RotaDAO();
+        ContratoDAO contratoDAO = new ContratoDAO();
 
-        Rota rota01 = new Rota(0, "Fortaleza");
-        Rota rota02 = new Rota(0, "Aquiraz");
-        Rota rota03 = new Rota(0, "Quixada");
+        Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
+        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis() + 1);
 
-        rotaDAO.insertRota(rota01);
-        rotaDAO.insertRota(rota02);
-        rotaDAO.insertRota(rota03);
 
-        System.out.println(rotaDAO.selectAllRota());
+        Contrato contrato = new Contrato(0, "Mora Solo", timestamp1, timestamp2, 1, 1, 3);
+
+        contratoDAO.insertContrato(contrato);
+
+        System.out.println(contratoDAO.selectAllContrato());
+
     }
 }

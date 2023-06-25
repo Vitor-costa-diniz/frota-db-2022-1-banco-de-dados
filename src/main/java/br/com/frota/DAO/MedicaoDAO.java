@@ -87,6 +87,9 @@ public class MedicaoDAO extends ConexaoDB{
                 String consumo = rs.getString("consumo");
                 Integer medidorId = rs.getInt("medidor_id");
                 Integer timeRotaId = rs.getInt("time_rota_id");
+
+                Medicao medicao = new Medicao(id, mes, ano, dataMedicao, consumo, medidorId, timeRotaId);
+                entidades.add(medicao);
             }
         } catch (SQLException e) {
             printSQLException(e);

@@ -11,10 +11,10 @@ import java.util.List;
 
 public class TarefaRotaDAO extends ConexaoDB{
     private static final String INSERT_TAREFA_ROTA_SQL = "INSERT INTO tarefa_rota (observacao, data_inicio, data_fim, tarefa_rotacao, rota_id) VALUES (?, ?, ?, ?, ?);";
-    private static final String SELECT_TAREFA_ROTA_BY_ID = "SELECT id, observacao, data_inicio, data_fim, tarefa_rotcao, rota_id FROM tarefa_rota WHERE id = ?";
+    private static final String SELECT_TAREFA_ROTA_BY_ID = "SELECT id, observacao, data_inicio, data_fim, tarefa_rotacao, rota_id FROM tarefa_rota WHERE id = ?";
     private static final String SELECT_ALL_TAREFA_ROTA = "SELECT * FROM tarefa_rota;";
     private static final String DELETE_TAREFA_ROTA_SQL = "DELETE FROM tarefa_rota WHERE id = ?;";
-    private static final String UPDATE_TAREFA_ROTA_SQL = "UPDATE tarefa_rota SET id = ? observacao = ?, data_inicio = ?, data_fim = ?, tarefa_rotcao = ?, rota_id = ? WHERE id = ?;";
+    private static final String UPDATE_TAREFA_ROTA_SQL = "UPDATE tarefa_rota SET id = ? observacao = ?, data_inicio = ?, data_fim = ?, tarefa_rotacao = ?, rota_id = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM tarefa_rota;";
 
     public Integer count() {

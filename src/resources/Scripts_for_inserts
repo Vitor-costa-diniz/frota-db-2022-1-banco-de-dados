@@ -71,3 +71,107 @@
             rotaDAO.insertRota(rota03);
 
             System.out.println(rotaDAO.selectAllRota());
+
+//Classe
+
+           ClasseDAO classeDAO = new ClasseDAO();
+
+           Classe classe = new Classe(0, "Classe B", 1);
+
+           classeDAO.insertClasse(classe);
+
+            System.out.println(classeDAO.selectAllClasse());
+
+
+//Poste
+
+            PosteDAO posteDAO = new PosteDAO();
+
+            Poste poste = new Poste(0, "3.7415140 ", "38.5094247", "123456", "");
+
+            posteDAO.insertPoste(poste);
+
+            System.out.println(posteDAO.selectAllPoste());
+
+//TarefaRota
+
+           TarefaRotaDAO tarefaRotaDAO = new TarefaRotaDAO();
+
+            Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
+            Timestamp timestamp2 = new Timestamp(System.currentTimeMillis() + 1);
+
+            TarefaRota tarefaRota = new TarefaRota(0, "", timestamp1, timestamp2, "Rotacionar",1 );
+
+            tarefaRotaDAO.insertTarefaRota(tarefaRota);
+
+            System.out.println(tarefaRotaDAO.selectAllTarefaRota());
+
+//Time Rota
+
+       TimeRotaDAO timeRotaDAO = new TimeRotaDAO();
+
+        TimeRota timeRota = new TimeRota(0, 1, 1);
+
+        timeRotaDAO.insertTimeRota(timeRota);
+
+        System.out.println(timeRotaDAO.selectAllTimeRota());
+
+// Medidor
+
+        MedidorDAO medidorDAO = new MedidorDAO();
+
+        Medidor medidor = new Medidor(0, "Casa", 1, 1);
+
+        medidorDAO.insertMedidor(medidor);
+
+        System.out.println(medidorDAO.selectAllMedidor());
+
+
+// Tarifa
+
+        TarifaDAO tarifaDAO = new TarifaDAO();
+
+        Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
+        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
+
+        Tarifa tarifa = new Tarifa(0, "0.1", 1, "PL3260", timestamp1, timestamp2);
+
+        tarifaDAO.insertTarifa(tarifa);
+
+        System.out.println(tarifaDAO.selectAllTarifa());
+
+// Medicao
+
+        MedicaoDAO medicaoDAO = new MedicaoDAO();
+
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+
+        Medicao medicao = new Medicao(0, "06", "2023", timestamp, "152,2 kWh/mês", 1, 2);
+
+        medicaoDAO.insertMedicao(medicao);
+
+        System.out.println(medicaoDAO.selectAllMedicao());
+
+//Cobranca
+
+       CobrancaDAO cobrancaDAO = new CobrancaDAO();
+
+       Cobranca cobranca = new Cobranca(0, "06", "2023", 1, 1);
+
+       cobrancaDAO.insertCobranca(cobranca);
+
+       System.out.println(cobrancaDAO.selectAllCobranca());
+
+//Contrato
+
+     ContratoDAO contratoDAO = new ContratoDAO();
+
+            Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
+            Timestamp timestamp2 = new Timestamp(System.currentTimeMillis() + 1);
+    
+
+            Contrato contrato = new Contrato(0, "Mora Solo", timestamp1, timestamp2, 1, 1, 3);
+
+            contratoDAO.insertContrato(contrato);
+
+            System.out.println(contratoDAO.selectAllContrato());

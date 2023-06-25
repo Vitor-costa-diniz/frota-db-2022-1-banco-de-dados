@@ -87,6 +87,9 @@ public class ContratoDAO extends ConexaoDB{
                 Integer medidorId = rs.getInt("medidor_id");
                 Integer classeId = rs.getInt("classe_id");
                 Integer clienteId = rs.getInt("cliente_id");
+
+                Contrato contrato = new Contrato(id, descricao, dataInicio, dataCriacao, medidorId, classeId, clienteId);
+                entidades.add(contrato);
             }
         } catch (SQLException e) {
             printSQLException(e);
