@@ -1,5 +1,5 @@
 package br.com.frota.util;
-import br.com.conta.DAO.*;
+import br.com.frota.DAO.*;
 
 public class Teste {
     static TipoPessoaDAO tipo_pessoaDAO = new TipoPessoaDAO();
@@ -21,7 +21,7 @@ public class Teste {
 //        TimeRota timeRota = new TimeRota(1, 1, 1 );
 //        timeRotaDAO.setInsertTimeRotaSQL(timeRota);
 
-        System.out.println(timeRotaDAO.selectTimeRota(1));
+        System.out.println(timeRotaDAO.selectTimeRotaById(1));
 
 
     }

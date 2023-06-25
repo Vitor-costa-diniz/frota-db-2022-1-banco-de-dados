@@ -1,7 +1,7 @@
 package br.com.frota.model;
 
 import br.com.frota.DAO.TipoFaseDAO;
-import io.github.astrapi69.model.GenericModel;
+
 
 public class Classe extends GenericModel {
     private String descricao;
