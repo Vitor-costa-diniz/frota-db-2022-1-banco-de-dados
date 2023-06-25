@@ -52,7 +52,7 @@ public class Medicao extends GenericModel{
     @Override
     public String toString() {
         return "Medicao{" +
-                "id='" + this.getId() + '\'' +
+                "id='" + super.getId() + '\'' +
                 "mes='" + mes + '\'' +
                 ", ano='" + ano + '\'' +
                 ", dataMedicao='" + dataMedicao + '\'' +

@@ -1,8 +1,9 @@
 package br.com.frota.model;
 
 import br.com.frota.DAO.PessoaDAO;
+import io.github.astrapi69.model.GenericModel;
 
-public class Cliente extends GenericModel{
+public class Cliente extends GenericModel {
     private String numDocumento;
     private String numCliente;
     private Integer pessoaId;
