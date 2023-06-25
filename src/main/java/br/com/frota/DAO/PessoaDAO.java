@@ -5,6 +5,7 @@ import br.com.frota.model.Pessoa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class PessoaDAO extends ConexaoDB{
     private static final String SELECT_PESSOA_BY_ID = "SELECT id, nome, cpf, cnpj, tipo_pessoa_id FROM pessoa WHERE id = ?";
     private static final String SELECT_ALL_PESSOA = "SELECT * FROM pessoa;";
     private static final String DELETE_PESSOA_SQL = "DELETE FROM pessoa WHERE id = ?;";
-    private static final String UPDATE_PESSOA_SQL = "UPDATE pessoa SET nome = ?, cpf = ?, cnpj = ?, topo_pessoa_id = ? WHERE id = ?;";
+    private static final String UPDATE_PESSOA_SQL = "UPDATE pessoa SET nome = ?, cpf = ?, cnpj = ?, tipo_pessoa_id = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM pessoa;";
 
     public Integer count() {
@@ -36,13 +37,14 @@ public class PessoaDAO extends ConexaoDB{
         try (PreparedStatement preparedStatement = prepararSQL(INSERT_PESSOA_SQL)) {
             preparedStatement.setString(1, entidade.getNome());
             preparedStatement.setString(2, entidade.getCpf());
-            preparedStatement.setInt(3, entidade.getTipoPessoaId());
 
             if (entidade.getCnpj().isEmpty() || entidade.getCnpj() == null){
-                preparedStatement.setString(4, null);
-                preparedStatement.executeUpdate();
+                preparedStatement.setNull(3, Types.VARCHAR);
+            } else {
+                preparedStatement.setString(3, entidade.getCnpj());
             }
-            preparedStatement.setString(4, entidade.getCnpj());
+
+            preparedStatement.setInt(4, entidade.getTipoPessoaId());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {

@@ -1,20 +1,24 @@
 package br.com.frota.util;
 
 import br.com.frota.DAO.*;
+import br.com.frota.model.Cliente;
+import br.com.frota.model.Funcionario;
+import br.com.frota.model.Rota;
 
 public class Teste {
-    static TipoPessoaDAO tipo_pessoaDAO = new TipoPessoaDAO();
-    static PessoaDAO pessoa = new PessoaDAO();
-    static RotaDAO rota = new RotaDAO();
-    static TarefaRotaDAO tarefaRota = new TarefaRotaDAO();
-    static TimeRotaDAO timeRotaDAO = new TimeRotaDAO();
-    static FuncionarioDAO funcionario = new FuncionarioDAO();
-
     public static void main(String[] args) throws Exception {
-//        ConexaoDB.criarTabelas(); // Chamada para criar as tabelas
+//        ConexaoDB.criarTabelas()
 
-        System.out.println(timeRotaDAO.selectTimeRotaById(0));
+        RotaDAO rotaDAO = new RotaDAO();
 
-        // Restante do código...
+        Rota rota01 = new Rota(0, "Fortaleza");
+        Rota rota02 = new Rota(0, "Aquiraz");
+        Rota rota03 = new Rota(0, "Quixada");
+
+        rotaDAO.insertRota(rota01);
+        rotaDAO.insertRota(rota02);
+        rotaDAO.insertRota(rota03);
+
+        System.out.println(rotaDAO.selectAllRota());
     }
 }

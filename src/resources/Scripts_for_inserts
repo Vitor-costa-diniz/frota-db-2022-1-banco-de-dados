@@ -1,0 +1,73 @@
+// Tipo Pessoa
+        TipoPessoaDAO tipoPessoaDAO = new TipoPessoaDAO();
+
+        // Inserir dados na tabela tipo_pessoa
+        TipoPessoa pessoaFisica = new TipoPessoa(0, "pessoa-fisica");
+        TipoPessoa pessoaJuridica = new TipoPessoa(0, "pessoa-juridica");
+
+        tipoPessoaDAO.insertTipoPessoa(pessoaFisica);
+        tipoPessoaDAO.insertTipoPessoa(pessoaJuridica);
+
+        System.out.println(tipoPessoaDAO.selectAllTipoPessoa());
+
+//Tipo Fase
+
+        TipoFaseDAO tipoFaseDAO = new TipoFaseDAO();
+
+        TipoFase tipoFaseO1 = new TipoFase(0, "monofasico");
+        TipoFase tipoFaseO2 = new TipoFase(1, "bifasico");
+        TipoFase tipoFaseO3 = new TipoFase(2, "trifasico");
+
+        tipoFaseDAO.insertTipoFase(tipoFaseO1);
+        tipoFaseDAO.insertTipoFase(tipoFaseO2);
+        tipoFaseDAO.insertTipoFase(tipoFaseO3);
+
+        System.out.println(tipoFaseDAO.selectAllTipoFase());
+
+//Pessoa
+        PessoaDAO pessoaDAO = new PessoaDAO();
+
+        Pessoa pessoa = new Pessoa(0, "Vitor", "12345678910", "", 1);
+
+        Pessoa pessoa = new Pessoa(0, "Bruno", "12744678910", "", 1);
+
+        pessoaDAO.insertPessoa(pessoa);
+
+        System.out.println(pessoaDAO.selectAllPessoa());
+
+    }
+
+//Cliente
+             ClienteDAO clienteDAO = new ClienteDAO();
+
+             Cliente cliente = new Cliente(0, "Vitor", "12345678910", 2);
+
+             clienteDAO.insertCliente(cliente);
+
+             System.out.println(clienteDAO.selectAllCliente());
+         }
+
+//Funcionario
+
+            FuncionarioDAO funcionarioDAO = new FuncionarioDAO();
+
+
+            Funcionario funcionario = new Funcionario(0, "123123123", 4);
+
+            funcionarioDAO.insertFuncionario(funcionario);
+
+            System.out.println(funcionarioDAO.selectAllFuncionario());
+
+//Rota
+
+            RotaDAO rotaDAO = new RotaDAO();
+
+            Rota rota01 = new Rota(0, "Fortaleza");
+            Rota rota02 = new Rota(0, "Aquiraz");
+            Rota rota03 = new Rota(0, "Quixada");
+
+            rotaDAO.insertRota(rota01);
+            rotaDAO.insertRota(rota02);
+            rotaDAO.insertRota(rota03);
+
+            System.out.println(rotaDAO.selectAllRota());

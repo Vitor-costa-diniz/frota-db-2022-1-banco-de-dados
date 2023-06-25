@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FuncionarioDAO extends ConexaoDB{
-    private static final String INSERT_FUNCIONARIO_SQL = "INSERT INTO funcionario (funcionario_id, tarefa_rota_id) VALUES (?, ?);";
-    private static final String SELECT_FUNCIONARIO_BY_ID = "SELECT id, funcionario_id, tarefa_rota_id FROM funcionario WHERE id = ?";
-    private static final String SELECT_ALL_FUNCIONARIO = "SELECT * FROM funcionario;";
+public class FuncionarioDAO extends ConexaoDB {
+    private static final String INSERT_FUNCIONARIO_SQL = "INSERT INTO funcionario (codigo_funcional, pessoa_id) VALUES (?, ?);";
+    private static final String SELECT_FUNCIONARIO_BY_ID = "SELECT id, codigo_funcional, pessoa_id FROM funcionario WHERE id = ?";
+    private static final String SELECT_ALL_FUNCIONARIO = "SELECT id, codigo_funcional, pessoa_id FROM funcionario;";
     private static final String DELETE_FUNCIONARIO_SQL = "DELETE FROM funcionario WHERE id = ?;";
-    private static final String UPDATE_FUNCIONARIO_SQL = "UPDATE funcionario SET funcionario_id = ?, tarefa_rota_id = ? WHERE id = ?;";
+    private static final String UPDATE_FUNCIONARIO_SQL = "UPDATE funcionario SET codigo_funcional = ?, pessoa_id = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM funcionario;";
 
     public Integer count() {
@@ -22,7 +22,7 @@ public class FuncionarioDAO extends ConexaoDB{
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                count = rs.getInt("count");
+                count = rs.getInt(1);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -93,9 +93,9 @@ public class FuncionarioDAO extends ConexaoDB{
 
     public boolean updateFuncionario(Funcionario entidade) throws SQLException {
         try (PreparedStatement statement = prepararSQL(UPDATE_FUNCIONARIO_SQL)) {
-            statement.setInt(1, entidade.getId());
-            statement.setString(2, entidade.getCodigoFuncional());
-            statement.setInt(3, entidade.getPessoaId());
+            statement.setString(1, entidade.getCodigoFuncional());
+            statement.setInt(2, entidade.getPessoaId());
+            statement.setInt(3, entidade.getId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {
