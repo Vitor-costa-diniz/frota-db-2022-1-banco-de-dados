@@ -16,7 +16,8 @@ CREATE TABLE tarifa(
     classe INT REFERENCES classe(id),
     lei VARCHAR(45) not null,
     data_inicio TIMESTAMP not null,
-    data_final TIMESTAMP not null
+    data_final TIMESTAMP not null,
+    aliquota_ICMS VARCHAR(45)
 );
 
 CREATE TABLE tipo_pessoa(

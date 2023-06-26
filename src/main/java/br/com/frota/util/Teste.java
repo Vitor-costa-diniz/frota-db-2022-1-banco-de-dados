@@ -1,26 +1,25 @@
 package br.com.frota.util;
 
 import br.com.frota.DAO.*;
-import br.com.frota.model.Contrato;
+import br.com.frota.model.Tarifa;
 
 import java.sql.Timestamp;
 
 
 public class Teste {
     public static void main(String[] args) throws Exception {
-//        ConexaoDB.criarTabelas()
+//        ConexaoDB.adicionarColunaAliquotaICMS();
 
-        ContratoDAO contratoDAO = new ContratoDAO();
+        TarifaDAO tarifaDAO = new TarifaDAO();
 
         Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
-        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis() + 1);
+        Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
 
+        Tarifa tarifa = new Tarifa(0, "0.1", 1, "PL3260", timestamp1, timestamp2,"0.07");
 
-        Contrato contrato = new Contrato(0, "Mora Solo", timestamp1, timestamp2, 1, 1, 3);
+        tarifaDAO.insertTarifa(tarifa);
 
-        contratoDAO.insertContrato(contrato);
-
-        System.out.println(contratoDAO.selectAllContrato());
+        System.out.println(tarifaDAO.selectAllTarifa());
 
     }
 }

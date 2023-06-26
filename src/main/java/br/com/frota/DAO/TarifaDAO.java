@@ -9,12 +9,12 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TarifaDAO extends ConexaoDB{
-    private static final String INSERT_TARIFA_SQL = "INSERT INTO tarifa (taxa, classe, lei, data_inicio, data_final) VALUES (?, ?, ?, ?, ?);";
-    private static final String SELECT_TARIFA_BY_ID = "SELECT id, taxa, classe, lei, data_inicio, data_final FROM tarifa WHERE id = ?";
+public class TarifaDAO extends ConexaoDB {
+    private static final String INSERT_TARIFA_SQL = "INSERT INTO tarifa (taxa, classe, lei, data_inicio, data_final, aliquota_ICMS) VALUES (?, ?, ?, ?, ?, ?);";
+    private static final String SELECT_TARIFA_BY_ID = "SELECT id, taxa, classe, lei, data_inicio, data_final, aliquota_ICMS FROM tarifa WHERE id = ?";
     private static final String SELECT_ALL_TARIFA = "SELECT * FROM tarifa;";
     private static final String DELETE_TARIFA_SQL = "DELETE FROM tarifa WHERE id = ?;";
-    private static final String UPDATE_TARIFA_SQL = "UPDATE tarifa SET id = ? taxa = ?, classe = ?, lei = ?, data_inicio = ?, data_final = ? WHERE id = ?;";
+    private static final String UPDATE_TARIFA_SQL = "UPDATE tarifa SET id = ?, taxa = ?, classe = ?, lei = ?, data_inicio = ?, data_final = ?, aliquota_ICMS = ? WHERE id = ?;";
     private static final String TOTAL = "SELECT count(1) FROM tarifa;";
 
     public Integer count() {
@@ -23,7 +23,7 @@ public class TarifaDAO extends ConexaoDB{
             ResultSet rs = preparedStatement.executeQuery();
 
             while (rs.next()) {
-                count = rs.getInt("count");
+                count = rs.getInt(1);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -40,6 +40,7 @@ public class TarifaDAO extends ConexaoDB{
             preparedStatement.setString(3, entidade.getLei());
             preparedStatement.setTimestamp(4, entidade.getDataInicio());
             preparedStatement.setTimestamp(5, entidade.getDataFinal());
+            preparedStatement.setString(6, entidade.getAliquotaICMS());
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -61,9 +62,9 @@ public class TarifaDAO extends ConexaoDB{
                 String lei = rs.getString("lei");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataFinal = rs.getTimestamp("data_final");
+                String aliquotaICMS = rs.getString("aliquota_ICMS");
 
-
-                entidade = new Tarifa(id, taxa, classe, lei, dataInicio, dataFinal);
+                entidade = new Tarifa(id, taxa, classe, lei, dataInicio, dataFinal, aliquotaICMS);
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -85,8 +86,9 @@ public class TarifaDAO extends ConexaoDB{
                 String lei = rs.getString("lei");
                 Timestamp dataInicio = rs.getTimestamp("data_inicio");
                 Timestamp dataFinal = rs.getTimestamp("data_final");
+                String aliquotaICMS = rs.getString("aliquota_ICMS");
 
-                Tarifa tarifa = new Tarifa(id, taxa, classe, lei, dataInicio, dataFinal);
+                Tarifa tarifa = new Tarifa(id, taxa, classe, lei, dataInicio, dataFinal, aliquotaICMS);
                 entidades.add(tarifa);
             }
         } catch (SQLException e) {
@@ -114,6 +116,8 @@ public class TarifaDAO extends ConexaoDB{
             statement.setString(4, entidade.getLei());
             statement.setTimestamp(5, entidade.getDataInicio());
             statement.setTimestamp(6, entidade.getDataFinal());
+            statement.setString(7, entidade.getAliquotaICMS());
+            statement.setInt(8, entidade.getId());
 
             return statement.executeUpdate() > 0;
         } catch (ClassNotFoundException e) {

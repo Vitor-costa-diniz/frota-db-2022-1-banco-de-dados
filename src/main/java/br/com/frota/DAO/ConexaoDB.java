@@ -43,6 +43,7 @@ public class ConexaoDB {
             }
         }
     }
+
     public static void criarTabelas() {
         String[] createTableQueries = {
                 "CREATE TABLE IF NOT EXISTS tipo_fase(" +
@@ -63,6 +64,7 @@ public class ConexaoDB {
                         "lei VARCHAR(45) NOT NULL," +
                         "data_inicio TIMESTAMP NOT NULL," +
                         "data_final TIMESTAMP NOT NULL" +
+                        "aliquota_ICMS VARCHAR(45)" +
                         ");",
 
                 "CREATE TABLE IF NOT EXISTS tipo_pessoa(" +

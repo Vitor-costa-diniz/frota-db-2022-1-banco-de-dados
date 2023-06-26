@@ -134,11 +134,12 @@
         Timestamp timestamp1 = new Timestamp(System.currentTimeMillis());
         Timestamp timestamp2 = new Timestamp(System.currentTimeMillis());
 
-        Tarifa tarifa = new Tarifa(0, "0.1", 1, "PL3260", timestamp1, timestamp2);
+        Tarifa tarifa = new Tarifa(0, "0.1", 1, "PL3260", timestamp1, timestamp2,"0.07");
 
         tarifaDAO.insertTarifa(tarifa);
 
         System.out.println(tarifaDAO.selectAllTarifa());
+
 
 // Medicao
 
